@@ -1,0 +1,16 @@
+version: "2"
+services:
+  client:
+    build: ./client
+    links:
+      - api
+  api:
+    build: ./api
+    links:
+      - db
+  db:
+    image: mysql
+  proxy:
+    links:
+      - client
+      - db
